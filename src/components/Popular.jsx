@@ -7,7 +7,7 @@ export default function Popular() {
         title: 'Современные методики обучения',
         description: 'Новейшие подходы к обучению, которые помогут вдохновить учеников.',
         src: "materials/metodic/details/1",
-        image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=300&h=200&fit=crop',
+        image: '/uio.jpeg',
       },
       {
         id: 2,
