@@ -12,7 +12,7 @@ export default function Hero() {
           Вдохновляй. <span className="text-white bg-[#ff8c00] px-2 rounded-md shadow-md">Обучай.</span> Меняй мир.
         </h1>
         <p className="text-gray-600 mt-5 max-w-xl text-sm sm:text-base">
-          Открой для себя новые методики, практические советы и планы уроков – всё для современных учителей матиматики.
+          Открой для себя новые методики, практические советы и планы уроков – всё для современных учителей математики.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
           <a
