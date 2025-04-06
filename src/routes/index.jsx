@@ -9,6 +9,8 @@ import Advice from "../pages/Dashboard/components/Advice.jsx";
 import LessonPlans from "../pages/Dashboard/components/LessonPlans.jsx"; 
 import LessonDetails from "../pages/Dashboard/components/LessonDetails.jsx";
 import MaterialsDetails from "../pages/Dashboard/components/MaterialsDetails.jsx";
+import Tasks from "../pages/Dashboard/components/Tasks.jsx";
+import TaskDetails from "../pages/Dashboard/components/TaskDetails.jsx";
 
 
 
@@ -56,6 +58,16 @@ const routes =
             {
                 path: 'lesson/details/:id',
                 element: <LessonDetails />,
+                errorElement: <ErrorPage />
+            },  
+            {
+                path: 'tasks',
+                element: <Tasks />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: 'tasks/details/:id',
+                element: <TaskDetails />,
                 errorElement: <ErrorPage />
             },
         ]

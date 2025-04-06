@@ -109,6 +109,22 @@ function Header() {
               <span className="ml-2">Планы уроков</span>
             </NavLink>
           </li>
+           <li>
+                      <NavLink
+                        to="tasks"
+                        title="Задания"
+                        className={({ isActive }) =>
+                          `flex items-center p-3 rounded-lg ${
+                            isActive
+                              ? 'bg-blue-100 text-blue-500 font-bold'
+                              : 'text-gray-700 hover:bg-blue-50'
+                          }`
+                        }
+                      >
+                        <FileText size={20} />
+                        <span className="ml-2 hidden md:inline">Задания</span>
+                      </NavLink>
+                    </li>
         </ul>
       </nav>
     </div>
