@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, BookOpen, Calendar, FileText, Settings, HelpCircle } from 'lucide-react';
+import { Home, BookOpen, Calendar, FileText, Settings, HelpCircle, BookMarked } from 'lucide-react';
 
 function Sidebar() {
   return (
@@ -115,6 +115,22 @@ function Sidebar() {
             >
               <FileText size={20} />
               <span className="ml-2 hidden md:inline">Задания</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="education"
+              title="Обучения"
+              className={({ isActive }) =>
+                `flex items-center p-3 rounded-lg ${
+                  isActive
+                    ? 'bg-blue-100 text-blue-500 font-bold'
+                    : 'text-gray-700 hover:bg-blue-50'
+                }`
+              }
+            >
+             <BookMarked size={20}/>
+              <span className="ml-2 hidden md:inline">Обучения</span>
             </NavLink>
           </li>
         </ul>

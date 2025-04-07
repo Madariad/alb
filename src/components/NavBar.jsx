@@ -69,13 +69,13 @@ export default function NavBar() {
         <div className="md:hidden bg-white shadow-md">
           <ul className="flex flex-col gap-4 py-4 text-gray-600">
             <li
-              className="px-6 hover:text-[#009eff]"
+              className="px-6 hover:text-[#009eff] font-bold"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <Link to="/">Главная</Link>
             </li>
             <li
-              className="px-6 hover:text-[#009eff]"
+              className="px-6 hover:text-[#009eff] font-bold"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <Link to="materials">Материалы</Link>

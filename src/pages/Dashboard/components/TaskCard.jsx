@@ -1,62 +1,97 @@
 import React from 'react';
-import { Clock, ChevronRight } from 'lucide-react'; // Import icons
+import { BookOpen, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export default function TaskCard({ title, description,  id }) {
-  // Function to get difficulty color
-  const getDifficultyColor = (level) => {
-    const colors = {
-      easy: 'bg-green-500',
-      medium: 'bg-yellow-500',
-      hard: 'bg-red-500'
+export default function TaskCard({ title, description, id, difficulty = 'medium' }) {
+  const getDifficultyConfig = (level) => {
+    const configs = {
+      easy: {
+        gradient: 'from-green-400 to-emerald-500',
+        badge: 'Простой',
+        borderColor: 'border-green-400'
+      },
+      medium: {
+        gradient: 'from-blue-400 to-indigo-500',
+        badge: 'Средний',
+        borderColor: 'border-blue-400'
+      },
+      hard: {
+        gradient: 'from-rose-400 to-pink-500',
+        badge: 'Сложный',
+        borderColor: 'border-rose-400'
+      }
     };
-    return colors[level] || 'bg-gray-500';
+    return configs[level] || configs.medium;
   };
 
+  const config = getDifficultyConfig(difficulty);
+
   return (
-    <div className="group relative overflow-hidden">
-      <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 ">
-        {/* Difficulty indicator */}
-        <div className={`absolute top-0 right-0 w-16 h-16 ${getDifficultyColor('dfd')} transform rotate-45 translate-x-8 -translate-y-8`} />
-        
-        {/* Content container */}
-        <div className="relative">
-          {/* Header */}
-          <h2 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
-            {title || 'Задание 1'}
-          </h2>
-
-          {/* Description */}
-          <p className="text-gray-600 mb-4 line-clamp-2">
-            {description || 'Описание задания...'}
-          </p>
-
-          {/* Footer */}
-          <div className="flex items-center justify-between">
-            {/* Deadline */}
-            <div className="flex items-center text-gray-500 text-sm">
-              <Clock size={16} className="mr-2" />
-              <span>{'2 дня'}</span>
-            </div>
-
-            {/* Action button */}
-            <Link 
-            to={`details/${id}`}
-            
-                        className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium 
-                             hover:bg-blue-700 transition-colors group-hover:translate-x-1 duration-300 hover:cursor-pointer">
-              Посмотреть
-              <ChevronRight size={16} />
-            </Link>
+    <div className={`
+      group relative overflow-hidden 
+      bg-white rounded-2xl border-2 ${config.borderColor}
+      transition-all duration-300 hover:shadow-lg hover:-translate-y-1
+    `}>
+      {/* Header with Gradient */}
+      <div className={`h-2 bg-gradient-to-r ${config.gradient}`} />
+      
+      {/* Main Content */}
+      <div className="p-6">
+        {/* Title Section */}
+        <div className="flex items-center gap-4 mb-4">
+          <div className={`
+            w-10 h-10 rounded-lg 
+            bg-gradient-to-r ${config.gradient}
+            flex items-center justify-center
+          `}>
+            <BookOpen size={20} className="text-white" />
           </div>
+          <div>
+            <h3 className="font-semibold text-gray-800 text-lg">
+              {title || 'Задание'}
+            </h3>
+            {/* <span className="text-sm text-gray-500">{config.badge}</span> */}
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-gray-600 mb-6 line-clamp-2">
+          {description || 'Описание задания...'}
+        </p>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between">
+          {/* Progress Indicator */}
+          <div className="flex gap-1">
+            <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+          </div>
+
+          {/* Action Button */}
+          <Link 
+            to={`details/${id}`}
+            onChange={() => {
+                console.log('Button clicked!');
+            }}
+            className={`
+              inline-flex items-center gap-2 px-4 py-2
+              text-sm font-medium text-white rounded-lg
+              bg-gradient-to-r ${config.gradient}
+              transition-all duration-300
+              hover:shadow-md hover:scale-105
+            `}
+          >
+            Открыть
+            <ChevronRight size={16} 
+              className="transition-transform group-hover:translate-x-1" 
+            />
+          </Link>
         </div>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute -bottom-2 -left-2 w-12 h-12 bg-blue-200 rounded-full opacity-50 
-                    group-hover:scale-150 transition-transform duration-500" />
-      <div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-200 rounded-full opacity-50 
-                    group-hover:scale-150 transition-transform duration-500" />
+      {/* Hover Effect Overlay */}
+      {/* <div className="absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-br from-black to-transparent transition-opacity" /> */}
     </div>
   );
 }

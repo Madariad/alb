@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Bell, Search } from 'lucide-react';
 import { Link, useNavigate, NavLink } from 'react-router-dom';
-import { Home, BookOpen, Calendar, FileText, Settings, HelpCircle } from 'lucide-react';
+import { Home, BookOpen, Calendar, FileText, Settings, HelpCircle, BookMarked } from 'lucide-react';
 
 function Header() {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ function Header() {
             <NavLink
               to="/materials"
               end
-              title="Home"
+              title="Домой"
               onClick={() => setIsMenuOpen(false)}
               className={({ isActive }) =>
                 `flex items-center p-3 rounded-lg ${
@@ -55,7 +55,7 @@ function Header() {
               }
             >
               <Home size={20} />
-              <span className="ml-2">Home</span>
+              <span className="ml-2">Домой</span>
             </NavLink>
           </li>
           <li>
@@ -113,6 +113,7 @@ function Header() {
                       <NavLink
                         to="tasks"
                         title="Задания"
+                        onClick={() => setIsMenuOpen(false)}
                         className={({ isActive }) =>
                           `flex items-center p-3 rounded-lg ${
                             isActive
@@ -122,7 +123,28 @@ function Header() {
                         }
                       >
                         <FileText size={20} />
-                        <span className="ml-2 hidden md:inline">Задания</span>
+                        <span className="ml-2 ">Задания</span>
+                      </NavLink>
+                    </li>
+
+
+
+
+                    <li>
+                      <NavLink
+                        to="education"
+                        title="Обучения"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={({ isActive }) =>
+                          `flex items-center p-3 rounded-lg ${
+                            isActive
+                              ? 'bg-blue-100 text-blue-500 font-bold'
+                              : 'text-gray-700 hover:bg-blue-50'
+                          }`
+                        }
+                      >
+                        <BookMarked size={20} />
+                        <span className="ml-2 ">Обучения</span>
                       </NavLink>
                     </li>
         </ul>
@@ -131,7 +153,7 @@ function Header() {
   );
 
   return (
-    <header className="bg-white shadow-sm z-10 py-3 px-4 relative">
+    <header className="bg-white shadow-sm z-10 py-3 px-4 relative" style={{zIndex: 1000}}>
       <div className="flex items-center justify-between">
         {/* Hamburger для мобильных устройств */}
         <div className="sm:hidden">
@@ -154,14 +176,14 @@ function Header() {
 
         <button 
           onClick={() => navigate(-1)}
-          className="hover:cursor-pointer bg-[#c2c3e7] p-3 rounded-md hidden md:block"
+          className="hover:cursor-pointer bg-[#7a7efc] p-3 rounded-md hidden md:block font-mono text-[#f0f8ff]"
         >
           Назад
         </button>
 
         <Link 
           to="/"
-          className="hover:cursor-pointer bg-[#c2c3e7] p-3 rounded-md"
+          className="hover:cursor-pointer bg-[#7a7efc] p-3 rounded-md font-mono text-[#f0f8ff]"
         >
           Главная
         </Link>

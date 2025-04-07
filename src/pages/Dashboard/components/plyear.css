@@ -1,0 +1,40 @@
+.player-wrapper {
+    width: 100%;
+    background: black;
+    position: relative;
+    touch-action: manipulation;
+  }
+  
+  .player-wrapper:fullscreen {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .player-wrapper:fullscreen .aspect-video {
+    height: 100%;
+  }
+  
+  .player-wrapper iframe {
+    border: none;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  @media (max-width: 768px) {
+    .player-wrapper button {
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .player-wrapper input[type="range"] {
+      height: 4px;
+    }
+  
+    .player-wrapper input[type="range"]::-webkit-slider-thumb {
+      width: 16px;
+      height: 16px;
+    }
+  }
